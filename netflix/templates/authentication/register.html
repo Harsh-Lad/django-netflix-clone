@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Netflix - Sign Up </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static '/css/global.css' %}">
+    <link rel="stylesheet" href="{% static '/css/landing-pages.css' %}">
+</head>
+
+<body>
+    <style>
+        body{
+            background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.9) 100%),url('{% static '/images/mainBgCollage.jpg' %}');
+
+        }
+    </style>
+  
+
+
+    <!-- index page block start | main landing page home | -->
+
+    <main style="padding: 0px 10px;">
+        <header class="d-flex space-between middle-align">
+            <a href="/">
+                <img src="{% static 'images/logo.png' %}" height="50px" width="170px" alt="site logo main"></img>
+            </a> 
+            <button class="button"><a href="/login"> Sign In</a></button>
+        </header>
+        <section id="login-form-section">
+            <!--Login form start-->
+
+                <div class="loginContainer d-flex direction-column">
+                    <h2 class="formtitle">
+                        Register Account
+                    </h2>
+                    <form action="#" id="loginForm" class="d-flex direction-column" method="post" name="loginForm">
+                    {% csrf_token %}
+                        <input type="text" name="email" id="email" class="email" placeholder="Email or phone number" onchange="validateEmail()" required/>
+                        <p id="errorEmail">Please enter a valid email address or phone number.</p>
+
+                        <input type="password" name="password1" id="password" placeholder="Password" required/>
+
+                        <input type="password" name="password2" id="password1" placeholder="Re-enter Password" required/>
+
+                        <button type="submit" class="button submitButton" id="signInButton" disabled="disabled">
+                            Register
+                        </button>
+
+
+                        <p class="signUpText para">
+                            Have an account? <span class="signUp"><a href="/login">Sign In</a></span>
+                        </p>
+                        <p class="bottomMessage para">
+                            This page is protected by Google reCAPTCHA to ensure you're not a bot
+                        </p>
+                    </form>
+                </div>
+
+            <!--Login form End-->
+        </section>
+    </main>
+
+    <script>
+        //function to validate email address on input text change and enable submit button if it's true
+        document.getElementById('errorEmail').style.display = "none";
+        function validateEmail() {
+            let email = document.getElementById('email').value;
+            let re = /\S+@\S+\.\S+/;
+            let result = re.test(email);
+            if (result) {
+                document.getElementById('errorEmail').style.display = "none";
+                document.getElementById('signInButton').disabled = false;
+               // document.getElementById("email-form").submit();
+            }
+            else {
+                document.getElementById('errorEmail').style.display = "block";
+                document.getElementById('signInButton').disabled = true;
+            }
+        }
+    </script>
+</body>
+
+</html>
