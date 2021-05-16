@@ -22,8 +22,7 @@ def login(request):
 
             if user is not None:
                 auth.login(request, user)
-                return redirect("browse")
-                            
+                return redirect("browse")           
             else:
                 return redirect('login')
         else:
@@ -39,23 +38,33 @@ def register(request):
     return render(request,'authentication/register.html')
 
 def browse(request):
-    username = request.user.username
+    username = request.user.email
     return render(request,'userDash/browse.html',{'userEmail':username})
 
 def latest(request):
-    return render(request,'userDash/latest.html')
+    username = request.user.email
+    return render(request,'userDash/latest.html' ,{'userEmail':username})
 
 def tvshow(request):
-    return render(request,'userDash/tvshow.html')
+    username = request.user.email
+    return render(request,'userDash/tvshow.html' ,{'userEmail':username})
 
 def movies(request):
-    return render(request,'userDash/movies.html')
+    username = request.user.email
+    return render(request,'userDash/movies.html' ,{'userEmail':username})
 
 def mylist(request):
-    return render(request,'userDash/mylist.html')
+    username = request.user.email
+    return render(request,'userDash/mylist.html' ,{'userEmail':username})
 
 def search(request):
-    return render(request,'userDash/search.html')
+    username = request.user.email
+    return render(request,'userDash/search.html' ,{'userEmail':username})
 
 def single(request):
-    return render(request,'userDash/single.html')
+    username = request.user.email
+    return render(request,'userDash/single.html' ,{'userEmail':username})
+
+def logoutUser(request):
+    logout(request)
+    return redirect('login')

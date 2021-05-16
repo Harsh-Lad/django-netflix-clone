@@ -39,8 +39,8 @@
                     </h2>
                     <form action="#" id="loginForm" class="d-flex direction-column" method="post" name="loginForm">
                     {% csrf_token %}
-                        <input type="text" name="email" id="email" class="email" placeholder="Email or phone number" onchange="validateEmail()" required/>
-                        <p id="errorEmail">Please enter a valid email address or phone number.</p>
+                        <input type="text" name="email" id="email" class="email" placeholder="Enter Email " onchange="validateEmail()" required/>
+                        <p id="errorEmail">Please enter a valid email address</p>
 
                         <input type="password" name="password1" id="password" placeholder="Password" required/>
 

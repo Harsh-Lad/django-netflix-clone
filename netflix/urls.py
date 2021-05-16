@@ -12,5 +12,6 @@ urlpatterns = [
     path('mylist',views.mylist, name='mylist'),
     path('search',views.search, name='search'),
     path('single',views.search, name='search'),
+    path('logout',views.logoutUser, name='logout'),
     
 ]
